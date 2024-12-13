@@ -1,0 +1,18 @@
+[
+    {
+        "videos": [
+          {
+            "id": 1,
+            "title": "Video 1",
+            "url": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
+            "description": "Descripción del video 1"
+          },
+          {
+            "id": 2,
+            "title": "Video 2",
+            "url": "https://www.youtube.com/embed/AULPtYo25Lw?si=UGdKX1NSrEcQ0jfn",
+            "description": "Descripción del video 2"
+          }
+        ]
+      }
+]

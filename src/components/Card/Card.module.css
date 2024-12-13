@@ -1,0 +1,28 @@
+.container {
+    padding: 0 0 1em 0;
+    margin-top: .5em;
+    width: 282px;
+    background-color: var(--gris);
+    background-repeat: no-repeat;
+    border-width: 4px; /* Ancho del borde */
+    border-style: solid; /* Tipo de borde */
+    border-radius: 8px; /* Opcional: esquinas redondeadas */
+}
+
+/* Front End */
+.front-end {
+    border-color: #00bcd4; /* Color celeste cian */
+    box-shadow: 0 4px 20px rgba(0, 188, 212, 0.5); /* Degradado de brillo */
+}
+
+/* Back End */
+.back-end {
+    border-color: #4caf50; /* Color verde cian */
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.5); /* Degradado de brillo */
+}
+
+/* Innovación y Gestión */
+.innovacion-gestion {
+    border-color: #ffeb3b; /* Color amarillo */
+    box-shadow: 0 4px 20px rgba(255, 235, 59, 0.5); /* Degradado de brillo */
+}
