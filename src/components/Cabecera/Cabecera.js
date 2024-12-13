@@ -1,24 +1,24 @@
 import { Link } from "react-router-dom"
-import styles from "./Cabecera.module.css"
-import logo from "./logo-alura.png"
-import CabeceraLink from "../CabeceraLink/CabeceraLink"
+import styles from './cabecera.module.css'
+import logo from "./logo-Main.png"
+import CabeceraLink from "../CabeceraLink/Cabeceralink"
 
 function Cabecera(){
     return(
-        <header className={styles.cabecera}>
-            <Link to="/">
-                <section className={styles.logoContainer}>
-                    <img src={logo} alt="Logo Alura"/> <span>Cinema</span>
-                </section>
-            </Link>
-            <nav>
-                <CabeceraLink url="./">
-                    Home
-                </CabeceraLink>
-                <CabeceraLink url="./Favoritos">
-                   Favoritos
-                </CabeceraLink>
-            </nav>
+        <header className={styles.Cabecera}>
+        <Link to="/">
+            <section className={styles.logoContainer}>
+                <img src={logo} alt="Logo ALuraflix"/>
+            </section>
+        </Link>
+        <nav>
+            <CabeceraLink url="./">
+                Home
+            </CabeceraLink>
+            <CabeceraLink url="./Favoritos">
+                Favoritos
+            </CabeceraLink>
+        </nav>
         </header>
     )
 }

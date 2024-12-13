@@ -1,11 +1,11 @@
-import Banner from "components/Banner";
-import styles from "./Favoritos.module.css";
-import Titulo from "components/Titulo";
-import Card from "components/Card";
-import { useFavoritosContext } from "context/Favoritos";
+import Banner from "../../components/Banner";
+import styles from "../../pages/Favoritos/Favoritos.module.css";
+import Titulo from "../../components/Titulo";
+import Card from "../../components/Card";
+import { useFavoritosContext } from "../Context/Favoritos";
 
 function Favoritos() {
-  const { favorito } = useFavoritosContext();
+  const { favorito, } = useFavoritosContext();
 
   return (
     <>

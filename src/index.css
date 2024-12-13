@@ -1,15 +1,21 @@
 :root{
-  --font:"Montserrat", sans-serif;
-  --blanco:#fff;
-  --negro:#222;
+  --font:"Source Code Pro", sans-serif;
+  --blanco:var(--blanco);
+  --negro:var(--negro);
   --gris:#e2e2e2;
+  --azul:#2271D1;
 }
-
 
 body {
   margin: 0;
-  font-family: var(--font);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
