@@ -1,10 +1,9 @@
-.container {
-    display: flex;         /* Flexbox para alinear horizontalmente */
-    gap: 10px;             /* Separación horizontal entre cada tarjeta */
-    padding: 10px;         /* Padding externo alrededor del contenedor */
-    flex-wrap: wrap;       /* Permite que las tarjetas pasen a la siguiente línea si es necesario */
-    justify-content: center; /* Centra las tarjetas en el contenedor */
-}
+.container{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    padding: 1rem 7%;
+  }
 
 .card {
     display: flex;
