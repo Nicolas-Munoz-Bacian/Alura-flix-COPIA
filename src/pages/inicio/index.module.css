@@ -1,6 +1,118 @@
-.container{
-    display: flex;
-    gap: 1rem;
-    justify-content: space-around;
-    padding: 1rem 7%;
+.container {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1rem 7%;
+}
+
+/* Estilos para los banners */
+.banner {
+  width: 100%; /* Asegura que el banner use todo el ancho */
+}
+
+.banner img {
+  max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+  /* ------------------------------ Responsividad ---------------------------------------*/
+
+/**BREAKPOINTS**/
+
+.resolucion{
+  width: 100%;
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .container{
+      grid-template-columns: 1fr;
+      width: 50%;
   }
+  .products-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 50%;
+  }
+  .card_list{
+      width: 80%;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+      margin-left: 60px;
+  }
+  .card {
+      height: auto;
+      width: 60%;
+      margin: 0 auto;
+  }
+  .card img {
+      max-width: 80%;
+      height: 100px;
+  }
+  .card-container--value {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .banner .backend .innovacionYgestion{
+    display: flex;
+  }
+
+  .container {
+    width: 80%;
+}
+}
+
+/* Tableta */
+@media (min-width: 768px) and (max-width: 990px) {
+  .products-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
+      gap: 20px; /* Espaciado entre elementos */
+  }
+  .card {
+      height: auto;
+      width: 100%;
+      max-width: 280px;
+  }
+  .card img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  .container {
+    width: 80%;
+}
+}
+
+/* Escritorio */
+@media (min-width: 991px) { /* Ajuste del breakpoint máximo */
+  .container{
+      width:100%;
+  }
+
+  .products-container {
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
+      gap: 20px; /* Espaciado entre columnas */
+  }
+  .card {
+      height: 500px;
+      width: 100%;
+      max-width: 300px;
+  }
+  .card img {
+      max-width: 100%;
+      height: auto;
+  }
+  .card-container--value {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+}

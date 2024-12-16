@@ -29,8 +29,9 @@ function EditModal({ initialData, onClose }) {
                 <div>
                     <label>Categoría:</label>
                     <select name="categoria" value={formData.categoria} onChange={handleChange}>
-                        <option value="opcion1">Opción 1</option>
-                        <option value="opcion2">Opción 2</option>
+                        <option value="opcion1">Front-End</option>
+                        <option value="opcion2">Back End</option>
+                        <option value="opcion3">Innovación y Gestión</option>
                     </select>
                 </div>
                 <div>
@@ -45,8 +46,8 @@ function EditModal({ initialData, onClose }) {
                     <label>Descripción:</label>
                     <textarea name="descripcion" value={formData.descripcion} onChange={handleChange} />
                 </div>
-                <button onClick={saveChanges}>Guardar Cambios</button>
-                <button onClick={clearChanges}>Limpiar Cambios</button>
+                <button onClick={saveChanges}>Guardar</button>
+                <button onClick={clearChanges}>Limpiar</button>
                 <button onClick={onClose}>Cerrar</button>
             </div>
         </div>

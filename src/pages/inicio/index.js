@@ -1,9 +1,10 @@
 import Titulo from "../../components/Titulo";
 import Banner from "../../components/Banner";
 import Card from "../../components/Card";
-import styles from "./index.module.css";
-import banner from "../inicio/front end.png";
-import backend from "../inicio/back end.png";
+import styles from "../../pages/inicio/index.module.css";
+import home from "../../pages/inicio/home.jpg"
+import frontend from "../../pages/inicio/front end.png";
+import backend from "../../pages/inicio/back end.png";
 import innovacionYgestion from "../inicio/innovación y gestión.png";
 import { useState, useEffect } from "react";
 
@@ -21,11 +22,11 @@ function Inicio() {
   }, []);
   return (
     <>
-      <Banner img="home" color="#154580" />
+      <Banner src={home} img="home" color="#154580" />
 
       {/* Sección Front End */}
       <Titulo>
-        <img src={banner} className="front-end" alt="banner front end" />
+        <img src={frontend} className="banner" alt="banner front end" />
       </Titulo>
 
       <section className={styles.container}>
@@ -36,7 +37,7 @@ function Inicio() {
 
       {/* Sección Back End */}
       <Titulo>
-        <img src={backend} className="back-end" alt="banner back end" />
+        <img src={backend} className="banner" alt="banner back end" />
       </Titulo>
 
       <section className={styles.container}>
@@ -47,7 +48,7 @@ function Inicio() {
 
       {/* Sección Innovación y Gestión */}
       <Titulo>
-        <img src={innovacionYgestion} className="innovacion-y-gestion" alt="banner innovación y gestion" />
+        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" />
       </Titulo>
       <section className={styles.container}>
         {videos.map(video => (

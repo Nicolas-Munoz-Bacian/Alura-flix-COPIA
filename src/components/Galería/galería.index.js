@@ -11,7 +11,7 @@ function Galeria() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/')
+    axios.get('http://localhost:3000/')
       .then(response => {
         setItems(response.data);
       })
@@ -19,7 +19,7 @@ function Galeria() {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/${id}`)
+    axios.delete(`http://localhost:3000/${id}`)
       .then(() => {
         setItems(items.filter(item => item.id !== id));
       })

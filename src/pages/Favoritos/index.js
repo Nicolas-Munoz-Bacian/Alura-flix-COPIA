@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import { useFavoritosContext } from "../Context/Favoritos";
 
 function Favoritos() {
-  const { favorito, } = useFavoritosContext();
+  const { favorito } = useFavoritosContext();
 
   return (
     <>

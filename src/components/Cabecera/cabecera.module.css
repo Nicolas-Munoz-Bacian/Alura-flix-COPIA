@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 1.1em 10em;
-    background-color: var(--azul);
+    background-color: black;
 }
 
 a{text-decoration: none;}

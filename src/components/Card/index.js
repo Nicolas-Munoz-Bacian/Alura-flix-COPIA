@@ -3,22 +3,22 @@ import { useFavoritosContext } from "../../pages/Context/Favoritos";
 import styles from "../../components/Card/Card.module.css";
 import iconFavorito from "../../components/Card/iconFavorito.png";
 import iconNoFavorito from "../../components/Card/iconNoFavorito.png";
-import Editmodal from "../../pages/ModalEditarCard/modal"
+import Editmodal from "../../pages/ModalEditarCard/modal";
 
-
-function Card({ id, capa, titulo, descripcion, video }) {
+function Card({ id, capa, titulo, descripcion, video, onDelete }) {
     const { favorito, agregarFavorito } = useFavoritosContext();
-    const [showModal, setShowModal] = useState(false); // Estado para manejar la visualización del modal
+    const [showModal, setShowModal] = useState(false);
     const isFavorito = favorito.some(fav => fav.id === id);
     const icon = isFavorito ? iconFavorito : iconNoFavorito;
 
     const handleEdit = () => {
-        setShowModal(true); // Mostrar el modal al hacer clic en editar
+        setShowModal(true);
     };
     
     const handleDelete = () => {
-        // Lógica para eliminar la tarjeta
-        // Esto puede implicar quitar la tarjeta del estado global o backend
+        if (onDelete) {
+            onDelete(id);
+        }
     };
 
     return (

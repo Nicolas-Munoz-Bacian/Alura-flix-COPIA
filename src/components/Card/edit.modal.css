@@ -1,0 +1,65 @@
+label {
+    margin-bottom: 5px; /* Espacio bajo las etiquetas */
+    display: block; /* Muestra las etiquetas en bloque */
+}
+
+
+/* ------------------------------ Responsividad ---------------------------------------*/
+
+/**BREAKPOINTS**/
+
+.resolucion {
+    width: 100%;
+  }
+  
+  /* Móvil */
+  @media (max-width: 767px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 10px; /* Espaciado entre elementos */
+    }
+  }
+  
+  /* Tableta */
+  @media (min-width: 768px) and (max-width: 990px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tabletas */
+        gap: 20px; /* Espaciado entre elementos */
+    }
+  }
+  
+  /* Escritorio */
+  @media (min-width: 991px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas en escritorio */
+        gap: 20px; /* Espaciado entre columnas */
+    }
+    .container {
+        width: 80%;
+    }
+  }
+  
+  /* Estilos de Card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    max-width: 300px; /* Ancho máximo para las cards */
+    margin: 0 auto;
+  }
+  
+  .card img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la card */
+    height: auto;
+  }
+  
+  .card-container--value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

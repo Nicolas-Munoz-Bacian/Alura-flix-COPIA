@@ -4,17 +4,110 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7); /* Mantener el fondo negro translúcido */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+    z-index: 1000;
 }
 
 .modalContent {
-    background: white;
+    background: black; /* Cambiado a negro */
+    color: white; /* Cambia el texto a blanco para contraste */
+    border: 2px solid cyan; /* Añadido borde celeste cian */
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
     width: 80%;
 }
+
+/* Añadir estilos para los labels */
+.modalContent label {
+    color: cyan; /* Cambiado el color de los labels a celeste cian */
+}
+
+button {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    border: 2px solid cyan; /* Borde cyan de 2px */
+    border-radius: 5px; /* Bordes redondeados, ajusta si es necesario */
+    padding: 10px 15px; /* Agregar padding para un mejor aspecto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: rgba(91, 104, 108, 0.8); /* Añadir transición para el efecto hover */
+    gap: 10px;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Efecto hover para oscurecer un poco el fondo */
+}
+
+/* ------------------------------ Responsividad ---------------------------------------*/
+
+/**BREAKPOINTS**/
+
+.resolucion{
+    width: 100%;
+  }
+  
+  /* Móvil */
+  @media (max-width: 767px) {
+    .container{
+        grid-template-columns: 1fr;
+        width: 50%;
+    }
+    .products-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        width: 50%;
+    }
+    .card_list{
+        width: 80%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        margin-left: 60px;
+    }
+  
+    .container {
+      width: 80%;
+  }
+  }
+  
+  /* Tableta */
+  @media (min-width: 768px) and (max-width: 990px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
+        gap: 20px; /* Espaciado entre elementos */
+    }
+    .card {
+        height: auto;
+        width: 100%;
+        max-width: 280px;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+  
+    .container {
+      width: 80%;
+  }
+  }
+  
+  /* Escritorio */
+  @media (min-width: 991px) { /* Ajuste del breakpoint máximo */
+    .container{
+        width:100%;
+    }
+  
+    .products-container {
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
+        gap: 20px; /* Espaciado entre columnas */
+    }
+  }
+  

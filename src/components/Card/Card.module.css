@@ -1,12 +1,54 @@
+/* Contenedor principal para las cards */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las cards se ajusten en múltiples líneas si es necesario */
+    justify-content: center; /* Centra las cards horizontalmente */
+    padding: 1em;
+}
+
+/* Card individual */
+.card {
+    flex: 1 1 280px; /* Permite que las cards crezcan y se reduzcan con un tamaño mínimo */
+    margin: 0.5em; /* Espaciado entre cards */
+    background-color: var(--gris); /* Color de fondo */
+    border: 4px solid #ccc; /* Borde */
+    border-radius: 8px; /* Esquinas redondeadas */
+    max-width: 300px; /* Tamaño máximo de la card */
+}
+
+/* Estilo para la imagen dentro de la card */
+.card img {
+    max-width: 100%; /* La imagen no excederá el ancho de la card */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
 .container {
     padding: 0 0 1em 0;
-    margin-top: .2em;
-    width: 282px;
+    margin-top: 0.2em;
     background-color: var(--gris);
     background-repeat: no-repeat;
     border-width: 4px; /* Ancho del borde */
     border-style: solid; /* Tipo de borde */
-    border-radius: 8px; /* Opcional: esquinas redondeadas */
+    border-radius: 8px; /* Esquinas redondeadas */
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centrar los elementos */
+    width: 100%; /* Asegurarse que ocupe el ancho completo en el grid */
+    max-width: 282px; /* Máximo ancho de la card */
+}
+
+.img {
+    padding: 10px;
+}
+
+.button {
+    position: relative;
+    background: black;
+    color: white;
+    border-color: cyan;
+    border-color: 2px;
+    border-radius: 10%;
+    padding: 5px;
+    margin-left: 5px;
 }
 
 /* Front End */
@@ -26,3 +68,92 @@
     border-color: #ffeb3b; /* Color amarillo */
     box-shadow: 0 4px 20px rgba(255, 235, 59, 0.5); /* Degradado de brillo */
 }
+
+  /* Estilos de Card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-container--value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+/* ------------------------------ Responsividad ---------------------------------------*/
+
+/**BREAKPOINTS**/
+
+.resolucion {
+    width: 100%;
+  }
+  
+  /* Móvil */
+  @media (max-width: 767px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 10px; /* Espaciado entre elementos */
+    }
+    .capa {
+        padding: 10px;
+        display: flex;
+        border-radius: 8px; /* Esquinas redondeadas */
+        display: flex; /* Flex para alinear los elementos */
+        flex-direction: column; /* Organiza los elementos en columna */
+        align-items: center; /* Centrar los elementos */
+        width: 80%; /* Asegurarse que ocupe el ancho completo en el grid */
+        max-width: 282px; 
+    }
+
+    .container{
+        display: flex; /* Flex para alinear los elementos */
+        width: 60%; /* Ancho del 90% en móviles */
+        margin: 0 auto; /* Centrado */
+        flex-wrap: wrap;
+    }
+    
+  }
+  
+  /* Tableta */
+  @media (min-width: 768px) and (max-width: 990px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tabletas */
+        gap: 20px; /* Espaciado entre elementos */
+    }
+
+    .container {
+        flex-direction: row; /* Dos columnas en tabletas */
+        width: 60%;
+        height: auto;
+    }
+    .card {
+        flex: 1 1 45%; /* Dos cards por fila */
+        max-width: 45%; /* Limitación del ancho */
+    }
+  }
+  
+  /* Escritorio */
+  @media (min-width: 991px) {
+    .products-container {
+        display: flex;
+        grid-template-columns: repeat(4, 1fr); /* Tres columnas en escritorio */
+        gap: 20px; /* Espaciado entre columnas */
+    }
+    .container {
+        width: 80%;
+        height: auto;
+    }
+  }

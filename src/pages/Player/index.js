@@ -1,42 +1,40 @@
 import Banner from "../../components/Banner";
-import styles from "../Player/Player.module.css";
+import styles from "./Player.module.css"
 import Titulo from "../../components/Titulo";
 import { useParams } from "react-router-dom";
-import videos from "../../components/data/db.json"
+import NotFound from "../../pages/NotFound";
+import { useEffect, useState } from "react";
 
 function Player(){
+ const [video,setVideo]= useState([])
+
 const parametros = useParams()
-const video= videos.find(video=> video.id) === Number((parametros.id))
+useEffect(()=>{
+    fetch(`https://my-json-server.typicode.com/DaniRiverol/alura-cinema-api/videos?id=${parametros.id}`)
+    .then(response=>response.json())
+    .then(data=>{
+        setVideo(...data)
+    })
+ })   
+
+//const video = videos.find(video=> video.id === Number(parametros.id))
 console.log(video);
+if(!video)return <NotFound/>
     return(
-        <>
-        <Banner img="player" color="#58B9AE"/>
+       <>
+       <Banner img="player" color="#58B9AE"/>
         <Titulo>
             <h1>Player</h1>
         </Titulo>
         <section className={styles.container}>
-            <ifrmae width="360" height="315"
-            src="https://youtu.be/rpvrLaBQwgg?si=UmyErXE1Xc_WYR0D"
-            tittle="Grupo Front End"
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write;"
-            ></ifrmae>
+        <iframe width="100%" height="100%" 
+        src={video.link} 
+        title={video.titulo} 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
         </section>
-        <section className={styles.container}>
-            <ifrmae width="360" height="315"
-            src="https://youtu.be/rpvrLaBQwgg?si=UmyErXE1Xc_WYR0D"
-            tittle="Grupo Back-End"
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write;"
-            ></ifrmae>
-        </section>
-        <section className={styles.container}>
-            <ifrmae width="360" height="315"
-            src="https://youtu.be/rpvrLaBQwgg?si=UmyErXE1Xc_WYR0D"
-            tittle="Grupo Equipo Innovación y Gestión"
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write;"
-            ></ifrmae>
-        </section>
-        </>
+       </>
     )
 }
 
-export default  Player;
+export default Player;
