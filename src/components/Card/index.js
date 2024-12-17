@@ -5,7 +5,7 @@ import iconFavorito from "../../components/Card/iconFavorito.png";
 import iconNoFavorito from "../../components/Card/iconNoFavorito.png";
 import Editmodal from "../../pages/ModalEditarCard/modal";
 
-function Card({ id, capa, titulo, descripcion, video, onDelete }) {
+function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear }) {
     const { favorito, agregarFavorito } = useFavoritosContext();
     const [showModal, setShowModal] = useState(false);
     const isFavorito = favorito.some(fav => fav.id === id);
@@ -39,11 +39,14 @@ function Card({ id, capa, titulo, descripcion, video, onDelete }) {
             </button>
             {showModal && (
                 <Editmodal
-                    initialData={{ id, titulo, capa, descripcion, video }}
-                    onClose={() => setShowModal(false)}
-                />
-            )}
-        </div>
+                initialData={{ id, titulo, capa, descripcion, video }}
+                onClose={() => setShowModal(false)}
+                onSave={onSave}
+                onDelete={onDelete}
+                onClear={onClear} // Pasa la función onClear al EditModal
+            />
+        )}
+    </div>
     );
 }
 

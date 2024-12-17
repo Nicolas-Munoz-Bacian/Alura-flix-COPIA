@@ -1,36 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from '../../components/Card';
-import EditModal from '../../pages/ModalEditarCard/modal'; // Asegúrate que la ruta es correcta
+import EditModal from '../../pages/ModalEditarCard/modal'; // Asegúrate de que el nombre de `EditModal` es correcto
 
-function VideoList() {
-    const [videos, setVideos] = useState([]);
+function NuevaCard({ initialVideos = [], addVideo }) {
+    const [videos, setVideos] = useState(initialVideos);
     const [showModal, setShowModal] = useState(false);
-    const [modalData, setModalData] = useState(null);
-
-    useEffect(() => {
-        fetch("https://my-json-server.typicode.com/DaniRiverol/alura-cinema-api/videos")
-            .then(response => response.json())
-            .then(data => setVideos(data));
-    }, []);
-
-    const addVideo = (nuevoVideo) => {
-        setVideos(prevVideos => [...prevVideos, { ...nuevoVideo, id: prevVideos.length + 1 }]);
-    };
-
+    const [modalData, setModalData] = useState({ categoria: 'Front-End' });
+    
     const handleNewVideo = () => {
-        setModalData(null); // Para crear nuevo video
-        setShowModal(true); // Mostrar modal
+        setModalData({ categoria: 'Front-End' });
+        setShowModal(true);
     };
 
     const handleSave = (videoData) => {
-        addVideo(videoData); // Agregar video a la lista
+        const updatedVideos = [...videos, videoData];
+        setVideos(updatedVideos);
+        setShowModal(false);
     };
 
+    const handleDelete = (videoId) => {
+        const updatedVideos = videos.filter(video => video.id !== videoId);
+        setVideos(updatedVideos);
+    };
+    
     return (
         <div>
-            <button onClick={handleNewVideo}>
-                Agregar Nuevo Video
-            </button>
+            <button onClick={handleNewVideo}>Agregar Nuevo Video</button>
             {showModal && (
                 <EditModal
                     initialData={modalData}
@@ -43,10 +38,10 @@ function VideoList() {
                     <Card
                         key={video.id}
                         {...video}
-                        onDelete={() => {} /* Tu lógica para eliminar */}
+                        onDelete={() => handleDelete(video.id)}
                         onEdit={() => {
-                            setModalData(video); // Cargar datos para editar
-                            setShowModal(true); // Mostrar modal
+                            setModalData(video);
+                            setShowModal(true);
                         }}
                     />
                 ))}
@@ -55,4 +50,4 @@ function VideoList() {
     );
 }
 
-export default VideoList;
+export default NuevaCard;
