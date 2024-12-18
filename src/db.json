@@ -1,24 +1,25 @@
 [
-    {
-        "videos": [
-          {
-            "id": 1,
-            "title": "Video 1",
-            "url": "https://www.youtube.com/embed/AG2QssLpQzI?si=6Yn355wcxAqU7_Ld",
-            "description": "Descripción del video 1"
-          },
-          {
-            "id": 2,
-            "title": "Video 2",
-            "url": "https://www.youtube.com/embed/AULPtYo25Lw?si=UGdKX1NSrEcQ0jfn",
-            "description": "Descripción del video 2"
-          },
-          {
-            "id": 3,
-            "tittle": "video",
-            "url":"https://youtu.be/QjOWz9avkg8?si=FVcTuMwfHHKMFELu",
-            "description": "Descripción del video 3"
-          }
-        ]
-      }
+  {
+    "id": 1,
+    "title": "Video 1",
+    "video": "https://www.youtube.com/watch?v=AG2QssLpQzI",
+    "description": "Descripción del video 1"
+  },
+  {
+    "id": 2,
+    "title": "Video 2",
+    "video": "https://www.youtube.com/watch?v=AULPtYo25Lw"
+  },
+  {
+    "id": 3,
+    "title": "video",
+    "video": "https://www.youtube.com/watch?v=QjOWz9avkg8", 
+    "description": "Descripción del video 3"
+  },
+  {
+    "id": 4,
+    "tittle": "video",
+    "video": "https://youtu.be/GJfOSoaXk4s?si=rRlv6Xfzm3ma5-X_",
+    "description": "¿Qué es Javascript"
+  }
 ]
