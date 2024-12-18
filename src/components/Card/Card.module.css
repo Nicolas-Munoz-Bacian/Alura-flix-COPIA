@@ -113,13 +113,13 @@
         display: flex; /* Flex para alinear los elementos */
         flex-direction: column; /* Organiza los elementos en columna */
         align-items: center; /* Centrar los elementos */
-        width: 80%; /* Asegurarse que ocupe el ancho completo en el grid */
+        width: 100%; /* Asegurarse que ocupe el ancho completo en el grid */
         max-width: 282px; 
     }
 
     .container{
         display: flex; /* Flex para alinear los elementos */
-        width: 60%; /* Ancho del 90% en móviles */
+        width: 100%; /* Ancho del 90% en móviles */
         margin: 0 auto; /* Centrado */
         flex-wrap: wrap;
     }
@@ -136,7 +136,7 @@
 
     .container {
         flex-direction: row; /* Dos columnas en tabletas */
-        width: 60%;
+        width: 100%;
         height: auto;
     }
     .card {
