@@ -17,24 +17,24 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
     };
 
     const handleDelete = () => {
-        if (onDelete) onDelete(id); // Llama a la función de eliminación pasada como prop
+        if (onDelete) onDelete(id); 
     };
 
     const formatYouTubeURL = (url) => {
         if (url && url.startsWith('http')) {
-            return url; // Ya está bien formada
+            return url; 
         } else if (url) {
-            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`; // Formación estándar para URLs de YouTube
+            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`;
         }
-        return ''; // Retorna vacío si no hay URL
+        return ''; 
     };
 
     // Manejar la reproducción del video
-    const handlePlayVideo = () => {
+    const handlePlayVideo = (event) => {
+        event.preventDefault(); // Prevenir la navegación por defecto
         const formattedVideoUrl = formatYouTubeURL(video);
-        // Llama a onPlay si está definido, de lo contrario redirige
         if (onPlay) {
-            onPlay(formattedVideoUrl); 
+            onPlay(formattedVideoUrl);
         } else {
             window.open(formattedVideoUrl, "_blank");
         }
@@ -47,7 +47,6 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
                     src={capa} 
                     alt={titulo} 
                     className={styles.imagen}
-                    onClick={handlePlayVideo} // Asegúrate de llamar a esta función al hacer clic en la imagen
                 />
                 <h2>{titulo}</h2>
             </Link>
