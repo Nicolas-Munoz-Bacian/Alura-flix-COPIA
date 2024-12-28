@@ -1,7 +1,11 @@
-.container{
+.container {
     text-align: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: .5em;
+    gap: 1rem;
+}
+
+.img {
+    max-width: 100%;
 }

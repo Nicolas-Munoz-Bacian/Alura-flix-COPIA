@@ -13,13 +13,12 @@
   {
     "id": 3,
     "title": "video",
-    "video": "https://www.youtube.com/watch?v=QjOWz9avkg8", 
-    "description": "Descripción del video 3"
+    "video": "https://www.youtube.com/watch?v=QjOWz9avkg8"
   },
   {
     "id": 4,
-    "tittle": "video",
+    "title": "video",
     "video": "https://youtu.be/GJfOSoaXk4s?si=rRlv6Xfzm3ma5-X_",
-    "description": "¿Qué es Javascript"
+    "description": "¿Que es Javascript"
   }
 ]

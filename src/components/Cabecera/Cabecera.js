@@ -15,11 +15,11 @@ function Cabecera(){
             <CabeceraLink url="./">
                 Home
             </CabeceraLink>
-            <CabeceraLink url="./Favoritos">
-                Favoritos
-            </CabeceraLink>
             <CabeceraLink url="./NuevaCard">
                 Nuevo Video
+            </CabeceraLink>
+            <CabeceraLink url="./Favoritos">
+                Favoritos
             </CabeceraLink>
         </nav>
         </header>

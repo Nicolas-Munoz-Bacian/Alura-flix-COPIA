@@ -26,12 +26,12 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <h2>Editar Card</h2>
+                <h2>Nueva Card</h2>
                 <div>
                     <label>Título:</label>
                     <input
                         name="titulo"
-                        value={formData.titulo}
+                        value={formData.titulo || ''}
                         onChange={handleChange}
                     />
                 </div>
@@ -39,7 +39,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
                     <label>Categoría:</label>
                     <select
                         name="categoria"
-                        value={formData.categoria}
+                        value={formData.categoria || ''}
                         onChange={handleChange}>
                         <option value="Front-End">Front-End</option>
                         <option value="Back-End">Back-End</option>
@@ -52,7 +52,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
                     <label>Imagen:</label>
                     <input
                         name="capa"
-                        value={formData.capa}
+                        value={formData.capa || ''}
                         onChange={handleChange}
                     />
                 </div>
@@ -60,7 +60,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
                     <label>Video URL:</label>
                     <input
                         name="video"
-                        value={formData.video}
+                        value={formData.video || ''}
                         onChange={handleChange}
                     />
                 </div>
@@ -68,7 +68,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
                     <label>Descripción:</label>
                     <textarea
                         name="descripcion"
-                        value={formData.descripcion}
+                        value={formData.descripcion || ''}
                         onChange={handleChange}
                     />
                 </div>

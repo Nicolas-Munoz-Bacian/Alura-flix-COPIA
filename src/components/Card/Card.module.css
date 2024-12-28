@@ -12,14 +12,26 @@
     margin: 0.5em; /* Espaciado entre cards */
     background-color: var(--gris); /* Color de fondo */
     border: 4px solid #ccc; /* Borde */
-    border-radius: 8px; /* Esquinas redondeadas */
-    max-width: 300px; /* Tamaño máximo de la card */
+    border-radius: 10px; /* Esquinas redondeadas */
+    max-width: 600px; /* Tamaño máximo de la card */
+    display: flex; /* Para que la imagen y los textos alineen correctamente */
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centrar los elementos */
 }
 
 /* Estilo para la imagen dentro de la card */
 .card img {
+    display: block;
     max-width: 100%; /* La imagen no excederá el ancho de la card */
     height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px;
+}
+
+/* Estilo específico para la imagen de miniatura */
+.imagen {
+    width: 100%; /* Asegúrate de que ocupe todo el ancho de la tarjeta */
+    height: 180px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Cambia este valor a cover o contain según lo que necesites */
 }
 
 .container {
@@ -29,11 +41,11 @@
     background-repeat: no-repeat;
     border-width: 4px; /* Ancho del borde */
     border-style: solid; /* Tipo de borde */
-    border-radius: 8px; /* Esquinas redondeadas */
+    border-radius: 10px; /* Esquinas redondeadas */
     flex-direction: column; /* Organiza los elementos en columna */
     align-items: center; /* Centrar los elementos */
     width: 100%; /* Asegurarse que ocupe el ancho completo en el grid */
-    max-width: 282px; /* Máximo ancho de la card */
+    max-width: 306px; /* Máximo ancho de la card */
 }
 
 .img {
@@ -149,11 +161,14 @@
   @media (min-width: 991px) {
     .products-container {
         display: flex;
-        grid-template-columns: repeat(4, 1fr); /* Tres columnas en escritorio */
         gap: 20px; /* Espaciado entre columnas */
+        grid-template-columns: repeat(2,1fr);
+        width: calc(100% - 1rem);
     }
     .container {
-        width: 100%;
         height: auto;
+        display: flex;
+        gap: 20px;
+        margin: 0.5rem;
     }
   }

@@ -1,6 +1,6 @@
 .capa {
     width: 80%;
-    height: 380px;
+    height: 490px;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -10,4 +10,34 @@
     width: 100%;
     opacity: .5;
     background-color: black;
+}
+
+/* Estilos para el párrafo */
+.container p {
+    text-align: center; /* Centraliza el texto */
+    margin: 1em 0; /* Espaciado arriba y abajo */
+    color: black; /* Color del texto */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+  }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .capa {
+        height: 30vh; /* Ajustar altura para pantallas más pequeñas */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+    .capa {
+        height: 35vh; /* Ajustar altura para tabletas */
+        width: 100%;
+    }
+}
+
+@media (min-width: 991px) {
+    .capa {
+        height: 80vh; /* Mantener altura para pantallas más grandes */
+        width: 300%;
+        position: relative;
+    }
 }

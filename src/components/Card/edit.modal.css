@@ -3,6 +3,11 @@ label {
     display: block; /* Muestra las etiquetas en bloque */
 }
 
+.imagen {
+  max-width: 100%; 
+  height: auto; 
+  cursor: pointer
+}
 
 /* ------------------------------ Responsividad ---------------------------------------*/
 

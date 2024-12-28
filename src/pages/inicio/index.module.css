@@ -16,6 +16,26 @@
   height: auto; /* Mantiene la proporción de la imagen */
 }
 
+.button{
+  height: 30%;
+  font-size: 18px;
+    font-weight: 400;
+    padding: 1em;
+    margin: 10px 5px 10px 5px;
+    background-color: black; /* Fondo negro */
+    border: 2px solid cyan; /* Borde cian */
+    border-radius: 10px; /* Bordes curvados a 10px */
+    color: white; /* Texto blanco para un buen contraste */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    display: inline-block; /* Permite a padding y margin funcionar correctamente */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para estilos al interactuar */
+}
+
+.button:hover{
+  background-color: cyan; /* Cambia de color al pasar el cursor */
+  color: black; /* Cambiar el color del texto para resaltar */
+}
+
   /* ------------------------------ Responsividad ---------------------------------------*/
 
 /**BREAKPOINTS**/

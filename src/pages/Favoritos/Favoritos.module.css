@@ -1,0 +1,85 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los items se envuelvan */
+  justify-content: center; /* Centra los items en el contenedor */
+  gap: 1rem; /* Espacio entre los elementos */
+  overflow-y: auto; /* Habilita el desplazamiento vertical si es necesario */
+}
+
+/* Estilos para los banners */
+.banner {
+  width: 100%; /* Asegura que el banner use todo el ancho */
+}
+
+.banner img {
+  max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+/* ------------------------------ Responsividad --------------------------------------- */
+
+/**BREAKPOINTS**/
+
+.resolucion {
+  width: 100%;
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .products-container {
+      display: grid;
+      grid-template-columns: 1fr; /* Una columna en móvil */
+      gap: 10px; /* Espaciado entre elementos */
+  }
+
+  .capa {
+      padding: 10px;
+      display: flex;
+      border-radius: 8px; /* Esquinas redondeadas */
+      flex-direction: column; /* Organiza los elementos en columna */
+      align-items: center; /* Centra los elementos */
+      width: 100%; /* Asegurarse que ocupe el ancho completo en el grid */
+      max-width: 282px; 
+  }
+
+  .container {
+      display: flex; /* Flex para alinear los elementos */
+      flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+      width: 100%; 
+      margin: 0 auto; 
+  }
+}
+
+/* Tableta */
+@media (min-width: 768px) and (max-width: 990px) {
+  .products-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas en tabletas */
+      gap: 20px; /* Espaciado entre elementos */
+  }
+
+  .container {
+      flex-direction: row; /* Dos columnas en tabletas */
+      width: 100%;
+  }
+
+  .card {
+      flex: 1 1 45%; /* Dos cards por fila */
+      max-width: 45%; /* Limitación del ancho */
+  }
+}
+
+/* Escritorio */
+@media (min-width: 991px) {
+  .products-container {
+      display: flex; 
+      grid-template-columns: repeat(4, 1fr); /* Tres columnas en escritorio */
+      gap: 20px; /* Espaciado entre columnas */
+  }
+
+  .container {
+      display: flex;
+      gap: 20px;
+  }
+}
