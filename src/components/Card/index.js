@@ -49,16 +49,22 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
 
     // Manejar la reproducción del video
     const handlePlayVideo = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
         const formattedVideoUrl = formatYouTubeURL(video);
+
         // Llama a onPlay si está definido, de lo contrario redirige
         if (onPlay) {
-            onPlay(formattedVideoUrl); 
+            onPlay(formattedVideoUrl);
         } else {
-            window.open(formattedVideoUrl, "_blank");
+            handleRedirect(); // Llamada a handleRedirect
         }
+
         // Añadir verificación para ver cómo se está formateando el URL
         console.log('Formatted Video URL:', formattedVideoUrl);
+        
+        if (!formattedVideoUrl) {
+            console.error('El video no se pudo formatear correctamente.');
+        }
     };
 
     return (
