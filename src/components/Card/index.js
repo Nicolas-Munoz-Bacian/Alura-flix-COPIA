@@ -12,25 +12,38 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
     const isFavorito = favorito.some(fav => fav.id === id);
     const icon = isFavorito ? iconFavorito : iconNoFavorito;
 
+    // Manejar la edición del video
     const handleEdit = () => {
         setShowModal(true);
     };
 
+    // Manejar la eliminación del video
     const handleDelete = () => {
         if (onDelete) onDelete(id); // Llama a la función de eliminación pasada como prop
     };
 
+    // Formatear URL de YouTube
     const formatYouTubeURL = (url) => {
         if (!url) return ''; // Si no hay URL, retornar vacío
         if (url.startsWith('http')) {
             return url; // Ya está bien formada
-        } else if (url.includes('watch?v=')) {
-            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`; // Formación estándar para URLs de YouTube
+        } else if (url.includes('watch?v=')) { // Formación estándar para URLs de YouTube
+            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`;
         } else if (url.includes('youtu.be/')) {
             const videoId = url.split('youtu.be/')[1]; // Extrae el ID de la URL corta
             return `https://www.youtube.com/watch?v=${videoId}`;
         } else {
             return `https://www.youtube.com/watch?v=${url}`; // Asume que es un ID de video
+        }
+    };
+
+    // Manejar la redirección del video
+    const handleRedirect = () => {
+        const formattedVideoUrl = formatYouTubeURL(video);
+        if (formattedVideoUrl) {
+            window.open(formattedVideoUrl, "_blank"); // Redirigir al reproductor
+        } else {
+            console.error('El video no se pudo formatear correctamente.'); // Manejo de error
         }
     };
 
@@ -46,27 +59,16 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
         }
         // Añadir verificación para ver cómo se está formateando el URL
         console.log('Formatted Video URL:', formattedVideoUrl);
-        
-
-        if (formattedVideoUrl) {
-            if (onPlay) {
-                onPlay(formattedVideoUrl); // Llama a onPlay con el URL formateado
-            } else {
-                window.open(formattedVideoUrl, "_blank"); // Redirigir a YouTube
-            }
-        } else {
-            console.error('El video no se pudo formatear correctamente.');
-        }
     };
 
     return (
         <div className={styles.container}>
-            <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}>
+            <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
                 <img 
                     src={capa} 
                     alt={titulo} 
                     className={styles.imagen}
-                    onClick={handlePlayVideo} // Asegúrate de llamar a esta función al hacer clic en la imagen
+                    onClick={handleRedirect}
                 />
                 <h2>{titulo}</h2>
             </Link>
