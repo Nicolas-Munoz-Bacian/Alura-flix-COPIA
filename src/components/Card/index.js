@@ -6,7 +6,7 @@ import iconNoFavorito from "../../components/Card/iconNoFavorito.png";
 import EditModal from "../../pages/ModalEditarCard/modal";
 import { Link } from 'react-router-dom';
 
-function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear, imagen, onPlay }) {
+function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear, onPlay }) {
     const { favorito, agregarFavorito } = useFavoritosContext();
     const [showModal, setShowModal] = useState(false);
     const isFavorito = favorito.some(fav => fav.id === id);
@@ -17,24 +17,36 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
     };
 
     const handleDelete = () => {
-        if (onDelete) onDelete(id); 
+        if (onDelete) onDelete(id); // Llama a la función de eliminación pasada como prop
+    };
+
+    const handleRedirect = () => {
+        if (video) {
+            const formattedVideoUrl = formatYouTubeURL(video);
+            window.open(formattedVideoUrl, "_blank"); // Redirigir a YouTube
+        } else {
+            console.error('No hay URL de video para redirigir');
+        }
     };
 
     const formatYouTubeURL = (url) => {
-        if (url && url.startsWith('http')) {
-            return url; 
-        } else if (url) {
-            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`;
+        if (!url) return ''; // Si no hay URL, retornar vacío
+        if (url.includes('youtube.com/watch?v=')) {
+            return url; // URL ya está bien formada
+        } else if (url.includes('youtu.be/')) {
+            const videoId = url.split('youtu.be/')[1];
+            return `https://www.youtube.com/watch?v=${videoId}`; 
+        } else {
+            return `https://www.youtube.com/watch?v=${url}`; // Asume que es un ID de video
         }
-        return ''; 
     };
 
     // Manejar la reproducción del video
-    const handlePlayVideo = (event) => {
-        event.preventDefault(); // Prevenir la navegación por defecto
+    const handlePlayVideo = () => {
         const formattedVideoUrl = formatYouTubeURL(video);
+        // Llama a onPlay si está definido, de lo contrario redirige
         if (onPlay) {
-            onPlay(formattedVideoUrl);
+            onPlay(formattedVideoUrl); 
         } else {
             window.open(formattedVideoUrl, "_blank");
         }
@@ -47,6 +59,7 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
                     src={capa} 
                     alt={titulo} 
                     className={styles.imagen}
+                    onClick={handlePlayVideo} // Asegúrate de llamar a esta función al hacer clic en la imagen
                 />
                 <h2>{titulo}</h2>
             </Link>
@@ -72,7 +85,7 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
                         setShowModal(false);
                     }}
                     onDelete={handleDelete}
-                    onClear={onClear} 
+                    onClear={onClear}
                 />
             )}
         </div>
