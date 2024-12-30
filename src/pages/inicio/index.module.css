@@ -136,3 +136,25 @@
       align-items: center;
   }
 }
+
+  /* Estilos de Card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    max-width: 300px; /* Ancho máximo para las cards */
+    margin: 0 auto;
+  }
+  
+  .card img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la card */
+    height: auto;
+  }
+  
+  .card-container--value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

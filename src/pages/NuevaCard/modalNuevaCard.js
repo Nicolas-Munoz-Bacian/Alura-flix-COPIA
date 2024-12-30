@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import styles from '../../pages/NuevaCard/NuevaCard.module.css'
 import Card from '../../components/Card';
 
 return (

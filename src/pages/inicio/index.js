@@ -9,14 +9,13 @@ import innovacionYgestion from "../inicio/innovación y gestión.png";
 import videosData from "../../components/data/db.json"
 import { useState, useEffect } from "react";
 import EditModal from "../../pages/ModalEditarCard/modal";
-import NuevaCard from "../../pages/NuevaCard/NuevaCard";
-
+import NuevaCard from "../../pages/NuevaCard/NuevaCard"
 
 function Inicio() {
   const [videos, setVideos] = useState(videosData.videos); // Carga los videos desde db.json
   const [showModal, setShowModal] = useState(false);
   const [videoToEdit, setVideoToEdit] = useState(null);
-  const [showNuevaCard, setShowNuevaCard] = useState(false);
+  const [showNuevaCardModal, setShowNuevaCardModal] = useState(false); // Para el modal de nueva tarjeta
 
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/DaniRiverol/alura-cinema-api/videos")
@@ -32,10 +31,12 @@ function Inicio() {
   };
 
   const handleSave = (updatedVideo) => {
-    const updatedVideos = videos.map((video) => (video.id === updatedVideo.id ? updatedVideo : video));
+    const updatedVideos = videos.map((video) => 
+      video.id === updatedVideo.id ? updatedVideo : video
+    );
     setVideos(updatedVideos); // Actualiza la lista de videos
     setShowModal(false);
-    setVideoToEdit(null);
+    setVideoToEdit(null); // Limpia el video seleccionado para editar
   };
 
   const handleDelete = (videoId) => {
@@ -48,17 +49,15 @@ function Inicio() {
     setShowModal(false);
   };
 
-  const handleCloseNuevaCard = () => {
-    setShowNuevaCard(false);
-  };
-
+  // Maneja la adición de un nuevo video desde el modal
   const handleUpdateVideos = (newVideo) => {
-    setVideos((prevVideos) => [...prevVideos, newVideo]);
-    handleCloseNuevaCard(); // Cierra el formulario después de agregar
+    setVideos((prevVideos) => [...prevVideos, newVideo]); // Agrega el nuevo video a la lista
+    setShowNuevaCardModal(false); // Cierra el modal de NuevaCard
   };
 
+  // Abre el modal de NuevaCard
   const handleNuevaCard = () => {
-    setShowNuevaCard(true); // Abre el modal para NuevaCard
+    setShowNuevaCardModal(true);
   };
 
   // Datos estáticos de videos
@@ -67,12 +66,8 @@ function Inicio() {
   return (
     <>
       <Banner src={home} img="home" color="#154580" />
-      
+                 {/* Botón para agregar nueva tarjeta */}
       {/* Mostrar componente NuevaCard si showNuevaCard es true */}
-      {showNuevaCard && (
-        <NuevaCard initialVideos={videos} onUpdateVideos={handleUpdateVideos} />
-      )}
-           {/* Botón para agregar nueva tarjeta */}
       <p style={{ textAlign: 'center', margin: '1em 125px' }}>
         Challenge AluraFlix.<p></p>
         Aquí puedes ver los videos a continuación y crear nuevas cartas con URLs 
@@ -102,7 +97,7 @@ function Inicio() {
         <img src={backend} className="banner" alt="banner back end" />
       </Titulo>
       <section className={styles.container}>
-        {staticVideos.filter(video => video.descripcion === "Back-End").map(video => (
+        {staticVideos.filter(video => video.descripcion === "Back End").map(video => (
           <Card
             {...video}
             key={video.id}
@@ -139,7 +134,9 @@ function Inicio() {
           onSave={handleSave}
         />
       )}
-
+      {NuevaCard && (
+        <NuevaCard initialVideos={videos} onUpdateVideos={handleUpdateVideos} />
+      )}
     </>
   );
 }
