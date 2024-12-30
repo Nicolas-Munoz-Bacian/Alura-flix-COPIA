@@ -35,6 +35,15 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
         }
     };
 
+    // Manejar la redirección del video
+    const handleRedirect = () => {
+        const formattedVideoUrl = formatYouTubeURL(video);
+        if (formattedVideoUrl) {
+            window.open(formattedVideoUrl, "_blank");
+        } else {
+            console.error('El video no se pudo formatear correctamente.');
+        }
+    };
 
     // Manejar la reproducción del video
     const handlePlayVideo = (event) => {
@@ -55,77 +64,68 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
         }
     };
     
-// Manejar la redirección del video
-const handleRedirect = () => {
-    const formattedVideoUrl = formatYouTubeURL(video);
-    if (formattedVideoUrl) {
-        window.open(formattedVideoUrl, "_blank");
-    } else {
-        console.error('El video no se pudo formatear correctamente.');
-    }
-};
-
-
-return (
-    <div className={styles.container}>
-        <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
-        <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
-            <img 
-                src={capa} 
-                alt={titulo} 
-                className={styles.imagen}
-                onClick={handlePlayVideo} // Llama a la función para reproducir el video
-            />
-            <h2>{titulo}</h2>
-        </Link>
-                <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
+    return (
+        <div className={styles.container}>
+            <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
+            <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
+            <Link className={styles.link} to={`/${id}`} onClick={(e) => {
+            handlePlayVideo(e); // Mantenemos la funcionalidad de reproducción
+        }}></Link>
+                <img 
+                    src={capa} 
+                    alt={titulo} 
+                    className={styles.imagen}
+                    onClick={handlePlayVideo} // Llama a la función para reproducir el video
+                />
+                <h2>{titulo}</h2>
+            </Link>
+                    <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
+                    <Link 
+                    className={styles.link} 
+                    to={`/${id}`} 
+                    onClick={(e) => {
+                        e.preventDefault(); // Prevenir la navegación predeterminada
+                        handlePlayVideo(e); // Manejar la reproducción del video
+                        handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
+                    }}
+                >
+                </Link>
                 <Link 
                 className={styles.link} 
                 to={`/${id}`} 
                 onClick={(e) => {
                     e.preventDefault(); // Prevenir la navegación predeterminada
                     handlePlayVideo(e); // Manejar la reproducción del video
-                    handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
                 }}
             >
             </Link>
-            <Link 
-            className={styles.link} 
-            to={`/${id}`} 
-            onClick={(e) => {
-                e.preventDefault(); // Prevenir la navegación predeterminada
-                handlePlayVideo(e); // Manejar la reproducción del video
-                handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
-            }}
-        >
-        </Link>
-        <img 
-            src={icon} 
-            alt="Icono favorito"
-            className={styles.favorito}
-            onClick={() => agregarFavorito({ id, titulo, capa })} // Manejar favoritos
-        />
-        <button onClick={handleEdit} className={styles.button}>
-            Editar
-        </button>
-        <button onClick={handleDelete} className={styles.button}>
-            Eliminar
-        </button>
-
-        {showModal && (
-            <EditModal
-                initialData={{ id, titulo, capa, descripcion, video }}
-                onClose={() => setShowModal(false)}
-                onSave={(data) => {
-                    onSave(data);  
-                    setShowModal(false);
-                }}
-                onDelete={handleDelete}
-                onClear={onClear} 
+            <img 
+                src={icon} 
+                alt="Icono favorito"
+                className={styles.favorito}
+                onClick={() => agregarFavorito({ id, titulo, capa })} // Manejar favoritos
             />
-        )}
-    </div>
-);
-}
-
-export default Card;
+            <button onClick={handleEdit} className={styles.button}>
+                Editar
+            </button>
+            <button onClick={handleDelete} className={styles.button}>
+                Eliminar
+            </button>
+    
+            {showModal && (
+                <EditModal
+                    initialData={{ id, titulo, capa, descripcion, video }}
+                    onClose={() => setShowModal(false)}
+                    onSave={(data) => {
+                        onSave(data);  
+                        setShowModal(false);
+                    }}
+                    onDelete={handleDelete}
+                    onClear={onClear} 
+                />
+            )}
+        </div>
+    );
+    }
+    
+    export default Card;
