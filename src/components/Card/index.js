@@ -96,6 +96,7 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
                 onClick={(e) => {
                     e.preventDefault(); // Prevenir la navegación predeterminada
                     handlePlayVideo(e); // Manejar la reproducción del video
+                    handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
                 }}
             >
             </Link>
