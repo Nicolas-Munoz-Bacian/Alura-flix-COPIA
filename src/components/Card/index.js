@@ -6,7 +6,6 @@ import iconNoFavorito from "../../components/Card/iconNoFavorito.png";
 import EditModal from "../../pages/ModalEditarCard/modal";
 import { Link } from 'react-router-dom';
 
-
 function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear, imagen, onPlay }) {
     const { favorito, agregarFavorito } = useFavoritosContext();
     const [showModal, setShowModal] = useState(false);
@@ -36,68 +35,97 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
         }
     };
 
+
     // Manejar la reproducción del video
-    const handlePlayVideo = () => {
+    const handlePlayVideo = (event) => {
+        event.preventDefault();
         const formattedVideoUrl = formatYouTubeURL(video);
-        // Verifica si la URL formateada es válida
-        if (formattedVideoUrl) {
-            if (onPlay) {
-                onPlay(formattedVideoUrl); // Llama a onPlay con el URL formateado
-            } else {
-                window.open(formattedVideoUrl, "_blank"); // Redirige a YouTube
-            }
+
+        // Llama a onPlay si está definido, de lo contrario redirige
+        if (onPlay) {
+            onPlay(formattedVideoUrl);
         } else {
-            console.error('Formato de video no válido:', video); // Manejo de errores
+            handleRedirect(); // Llamada a handleRedirect
+        }
+
+        console.log('Formatted Video URL:', formattedVideoUrl);
+        
+        if (!formattedVideoUrl) {
+            console.error('El video no se pudo formatear correctamente.');
         }
     };
+    
+// Manejar la redirección del video
+const handleRedirect = () => {
+    const formattedVideoUrl = formatYouTubeURL(video);
+    if (formattedVideoUrl) {
+        window.open(formattedVideoUrl, "_blank");
+    } else {
+        console.error('El video no se pudo formatear correctamente.');
+    }
+};
 
-    const handleRedirect = () => {
-        if (video) {
-            const formattedVideoUrl = formatYouTubeURL(video);
-            window.open(formattedVideoUrl, "_blank"); // Redirigir a YouTube
-        } else {
-            console.error('No hay URL de video para redirigir');
-        }
-    };
 
-    return (
-        <div className={styles.container}>
-            <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
-                <img 
-                    src={capa} 
-                    alt={titulo} 
-                    className={styles.imagen}
-                    onClick={handlePlayVideo} // Llama a la función para reproducir el video
-                />
-                <h2>{titulo}</h2>
-            </Link>
+return (
+    <div className={styles.container}>
+        <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
+        <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
             <img 
-                src={icon} 
-                alt="Icono favorito"
-                className={styles.favorito}
-                onClick={() => agregarFavorito({ id, titulo, capa })} // Manejar favoritos
+                src={capa} 
+                alt={titulo} 
+                className={styles.imagen}
+                onClick={handlePlayVideo} // Llama a la función para reproducir el video
             />
-            <button onClick={handleEdit} className={styles.button}>
-                Editar
-            </button>
-            <button onClick={handleDelete} className={styles.button}>
-                Eliminar
-            </button>
+            <h2>{titulo}</h2>
+        </Link>
+                <Link className={styles.link} to={`/${id}`} onClick={handlePlayVideo}></Link>
+                <Link 
+                className={styles.link} 
+                to={`/${id}`} 
+                onClick={(e) => {
+                    e.preventDefault(); // Prevenir la navegación predeterminada
+                    handlePlayVideo(e); // Manejar la reproducción del video
+                    handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
+                }}
+            >
+            </Link>
+            <Link 
+            className={styles.link} 
+            to={`/${id}`} 
+            onClick={(e) => {
+                e.preventDefault(); // Prevenir la navegación predeterminada
+                handlePlayVideo(e); // Manejar la reproducción del video
+                handleRedirect(); // Llamar a handleRedirect en caso de que no haya reproducción
+            }}
+        >
+        </Link>
+        <img 
+            src={icon} 
+            alt="Icono favorito"
+            className={styles.favorito}
+            onClick={() => agregarFavorito({ id, titulo, capa })} // Manejar favoritos
+        />
+        <button onClick={handleEdit} className={styles.button}>
+            Editar
+        </button>
+        <button onClick={handleDelete} className={styles.button}>
+            Eliminar
+        </button>
 
-            {showModal && (
-                <EditModal
-                    initialData={{ id, titulo, capa, descripcion, video }}
-                    onClose={() => setShowModal(false)}
-                    onSave={(data) => {
-                        onSave(data);  
-                        setShowModal(false);
-                    }}
-                    onDelete={handleDelete}
-                    onClear={onClear} 
-                />
-            )}
-        </div>
-    );
+        {showModal && (
+            <EditModal
+                initialData={{ id, titulo, capa, descripcion, video }}
+                onClose={() => setShowModal(false)}
+                onSave={(data) => {
+                    onSave(data);  
+                    setShowModal(false);
+                }}
+                onDelete={handleDelete}
+                onClear={onClear} 
+            />
+        )}
+    </div>
+);
 }
 
 export default Card;
