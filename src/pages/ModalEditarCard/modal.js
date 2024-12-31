@@ -26,7 +26,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <h2>Nuevo video</h2>
+                <h2>Nuevo</h2>
                 <div>
                     <label>Título:</label>
                     <input
