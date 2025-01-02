@@ -10,7 +10,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
     };
 
     const saveChanges = () => {
-        onSave(formData);
+        onSave(formData); // Llama a la función onSave pasada como prop
         onClose();
     };
 
@@ -26,7 +26,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <h2>Nuevo</h2>
+                <h2>Nuevo video</h2>
                 <div>
                     <label>Título:</label>
                     <input
@@ -72,7 +72,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
                         onChange={handleChange}
                     />
                 </div>
-                <button onClick={saveChanges}>Guardar</button>
+                <button onClick={saveChanges}>Guardar</button> {/* Llama a saveChanges */}
                 <button onClick={clearChanges}>Limpiar</button>
                 <button onClick={onClose}>Cerrar</button>
             </div>

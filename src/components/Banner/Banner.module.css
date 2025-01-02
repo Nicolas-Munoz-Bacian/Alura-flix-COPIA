@@ -1,5 +1,5 @@
 .capa {
-    width: 100%;
+    width: 80%;
     height: 490px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -37,7 +37,7 @@
 @media (min-width: 991px) {
     .capa {
         height: 80vh; /* Mantener altura para pantallas más grandes */
-        width: 100%;
+        width: 300%;
         position: relative;
     }
 }

@@ -113,10 +113,11 @@
 @media (min-width: 991px) { /* Ajuste del breakpoint máximo */
   .container{
       width:100%;
+      display: flex;
   }
 
   .products-container {
-      width: 80%;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
       gap: 20px; /* Espaciado entre columnas */
